@@ -11,6 +11,7 @@ RUN chmod +x ./rspec.sh
 ENTRYPOINT [ "./rspec.sh" ]
 
 FROM base-rails as dev
+RUN apk add imagemagick
 COPY ./shell/dev.sh ./
 RUN chmod +x ./dev.sh
 ENTRYPOINT [ "./dev.sh" ]
