@@ -3,9 +3,14 @@ RUN apk update && apk add bash nodejs git build-base make g++ sqlite-dev tzdata
 COPY ./Gemfile .
 COPY ./Gemfile.lock .
 RUN bundle install
+WORKDIR /app
 
 FROM base-rails as spec
-WORKDIR /app
-COPY ./entrypoint.sh ./
-RUN chmod +x ./entrypoint.sh
-ENTRYPOINT [ "./entrypoint.sh" ]
+COPY ./shell/rspec.sh ./
+RUN chmod +x ./rspec.sh
+ENTRYPOINT [ "./rspec.sh" ]
+
+FROM base-rails as dev
+COPY ./shell/dev.sh ./
+RUN chmod +x ./dev.sh
+ENTRYPOINT [ "./dev.sh" ]
