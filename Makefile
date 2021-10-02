@@ -1,7 +1,9 @@
-IMAGE 	:= rspec
-VERSION := v1.0
+IMAGE 	:= raityupiyo/rspec
+VERSION := v1.1
 
 build:
-	docker build --target spec -t ${IMAGE}:${VERSION} ./
+	@docker build --target spec -t ${IMAGE}:${VERSION} ./
 up:
-	docker run --rm ${IMAGE}:${VERSION} ${github}
+	@docker run --rm -t ${IMAGE}:${VERSION} ${github} 
+debug:
+	@docker run -it -d ${IMAGE}:${VERSION} ${github}
