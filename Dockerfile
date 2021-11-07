@@ -1,5 +1,5 @@
 FROM ruby:2.6.3-alpine3.10 as base-rails
-RUN apk update && apk add bash nodejs git build-base make g++ sqlite-dev tzdata
+RUN apk update && apk add bash nodejs git build-base make g++ sqlite-dev tzdata vim
 COPY ./Gemfile .
 COPY ./Gemfile.lock .
 RUN bundle install

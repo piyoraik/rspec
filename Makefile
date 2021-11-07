@@ -1,7 +1,7 @@
 RIMAGE 	 := raityupiyo/rspec
-RVERSION := v1.1
+RVERSION := v1.2
 DIMAGE 	 := raityupiyo/rails
-DVERSION := v1.0
+DVERSION := v1.1
 DNAME		 := debug_rails
 
 build:
