@@ -1,9 +1,9 @@
 FROM ruby:2.6.3-alpine3.10 as base-rails
 RUN apk update && apk add bash nodejs git build-base make g++ sqlite-dev tzdata vim
-COPY ./Gemfile .
+WORKDIR /app
+COPY ./Gemfile ./Gemfile.lock .
 COPY ./Gemfile.lock .
 RUN bundle install
-WORKDIR /app
 
 FROM base-rails as spec
 COPY ./shell/rspec.sh ./
