@@ -18,6 +18,6 @@ jobs:
           tags: ${{ github.sha }}, latest
           registry: docker.io
           dockerfile: Dockerfile
-          target: runner
+          target: spec
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
