@@ -1,0 +1,23 @@
+name: Build and Publish DockerImage
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & Push Docker Image
+        with:
+          image: ${{ secrets.DOCKER_USERNAME }}/rails
+          tags: ${{ github.sha }}, latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          target: dev
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
