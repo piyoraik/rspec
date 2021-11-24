@@ -1,10 +1,6 @@
 name: Build and Publish DockerImage
 
 on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -16,9 +12,9 @@ jobs:
         name: Check out code
 
       - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & push Docker image
+        name: Build & Push Docker Image
         with:
-          image: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
+          image: ${{ secrets.DOCKER_USERNAME }}/rspec
           tags: ${{ github.sha }}, latest
           registry: docker.io
           dockerfile: Dockerfile
