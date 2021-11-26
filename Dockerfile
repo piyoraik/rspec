@@ -1,7 +1,7 @@
 FROM ruby:2.6.3-alpine3.10 as base-rails
 RUN apk add bash nodejs git build-base make sqlite-dev tzdata
 WORKDIR /app
-COPY ./Gemfile ./Gemfile.lock ./
+COPY ./Gemfile ./
 RUN bundle install
 
 FROM base-rails as spec
