@@ -15,7 +15,7 @@ jobs:
         name: Build & Push Docker Image
         with:
           image: ${{ secrets.DOCKER_USERNAME }}/rspec
-          tags: ${{ github.sha }}, latest
+          tags: ${{ github.run_number }}, latest
           registry: docker.io
           dockerfile: Dockerfile
           target: spec
