@@ -12,10 +12,6 @@ up:
 	@docker run --rm -d --name ${DNAME} -p 3000:3000 ${DIMAGE}:${DVERSION} ${github}
 	@docker run --rm -t ${RIMAGE}:${RVERSION} ${github} 
 
-push:
-	@docker push ${RIMAGE}:${RVERSION}
-	@docker push ${DIMAGE}:${DVERSION}
-
 exec:
 	@docker exec -it ${DNAME} bash
 
