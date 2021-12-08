@@ -23,7 +23,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Run Sed
-        run: sed -e "s/.*/${github.run_number}/g" .rspec.version
+        run: sed -e "s/.*/${IMAGE_TAG}/g" .rspec.version
+        env:
+          IMAGE_TAG: ${{ github.run_number }} 
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
