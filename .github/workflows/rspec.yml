@@ -21,3 +21,17 @@ jobs:
           target: spec
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Run Sed
+        run: sed -e "s/.*/${github.run_number}/g" .rspec.version
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.TOKEN }}
+          commit-message: |
+              update container image
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: create-pull-request/release/${{ github.run_number }}
+          base: main

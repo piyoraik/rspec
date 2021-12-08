@@ -1,12 +1,8 @@
 RIMAGE 	 := raityupiyo/rspec
-RVERSION := v1.2
+RVERSION := $(shell cat .rspec.version )
 DIMAGE 	 := raityupiyo/rails
-DVERSION := v1.1
+DVERSION := $(shell cat .dev.version)
 DNAME		 := debug_rails
-
-build:
-	@docker build --target spec -t ${RIMAGE}:${RVERSION} ./
-	@docker build --target dev -t ${DIMAGE}:${DVERSION} ./
 
 up:
 	@docker run --rm -d --name ${DNAME} -p 3000:3000 ${DIMAGE}:${DVERSION} ${github}
