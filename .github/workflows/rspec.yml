@@ -25,7 +25,7 @@ jobs:
       - name: Run Sed
         run: sed -i -e "s/.*/${IMAGE_TAG}/g" .rspec.version
         env:
-          IMAGE_TAG: ${{ github.run_number }} 
+          IMAGE_TAG: ${{ github.run_id }} 
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
