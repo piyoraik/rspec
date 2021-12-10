@@ -14,6 +14,3 @@ exec:
 
 down:
 	@docker rm -f ${DNAME}
-
-alldown:
-	@docker rm -f `docker ps -a -q`
